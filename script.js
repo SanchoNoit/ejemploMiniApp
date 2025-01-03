@@ -8,15 +8,18 @@ document.addEventListener('DOMContentLoaded', () => {
         if (plugadasTexto === '') return;
 
         const li = document.createElement('li');
-        li.textContent = "2,54";
+        li.classList.add('list-unstyled')
+        li.classList.add('p-1')
+        li.textContent = (inputPulgadas.value * 2.54).toFixed(2);
         console.log(li)
 
         const eraseButton = document.createElement('button');
+        eraseButton.classList.add('rounded')
         eraseButton.textContent = '❌';
         eraseButton.style.marginLeft = '10px';
 
         eraseButton.addEventListener('click', () => {
-            li.classList.toggle('completed');
+            listaResultadosConversionPulgadas.removeChild(li);
         });
 
         li.appendChild(eraseButton);
