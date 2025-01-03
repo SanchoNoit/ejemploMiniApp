@@ -5,7 +5,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     convertirAPulgadasButton.addEventListener('click', () => {
         const plugadasTexto = inputPulgadas.value.trim();
-        if (plugadasTexto === '') return;
+        if (plugadasTexto === '' || isNaN(plugadasTexto)) {
+            window.alert("Introduzca un valor adecuado.");
+            return;
+        }
 
         const li = document.createElement('li');
         li.classList.add('list-unstyled')
