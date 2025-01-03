@@ -1,26 +1,30 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const taskInput = document.getElementById('taskInput');
-    const addTaskButton = document.getElementById('addTaskButton');
-    const taskList = document.getElementById('taskList');
+    const inputPulgadas = document.getElementById('inputPulgadas');
+    const convertirAPulgadasButton = document.getElementById('convertirAPulgadasButton');
+    const listaResultadosConversionPulgadas = document.getElementById('listaResultadosConversionPulgadas');
 
-    addTaskButton.addEventListener('click', () => {
-        const taskText = taskInput.value.trim();
-        if (taskText === '') return;
+    convertirAPulgadasButton.addEventListener('click', () => {
+        const plugadasTexto = inputPulgadas.value.trim();
+        if (plugadasTexto === '') return;
 
         const li = document.createElement('li');
-        li.textContent = taskText;
+        li.classList.add('list-unstyled')
+        li.classList.add('p-1')
+        li.textContent = (inputPulgadas.value * 2.54).toFixed(2);
+        console.log(li)
 
-        const completeButton = document.createElement('button');
-        completeButton.textContent = '✔';
-        completeButton.style.marginLeft = '10px';
+        const eraseButton = document.createElement('button');
+        eraseButton.classList.add('rounded')
+        eraseButton.textContent = '❌';
+        eraseButton.style.marginLeft = '10px';
 
-        completeButton.addEventListener('click', () => {
-            li.classList.toggle('completed');
+        eraseButton.addEventListener('click', () => {
+            listaResultadosConversionPulgadas.removeChild(li);
         });
 
-        li.appendChild(completeButton);
-        taskList.appendChild(li);
+        li.appendChild(eraseButton);
+        listaResultadosConversionPulgadas.appendChild(li);
 
-        taskInput.value = '';
+        inputPulgadas.value = '';
     });
 });
